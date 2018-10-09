@@ -178,11 +178,15 @@ public class EmailWithAttachmentSenderProvider implements EmailSenderProvider {
     private void addAttachment(Multipart multipart, String path) {
         MimeBodyPart htmlPart = new MimeBodyPart();
         DataSource source = new FileDataSource(path);
+        String fileName=new File(path).toPath().getFileName().toString();
         try {
             htmlPart.setDataHandler(new DataHandler(source));
-            htmlPart.setFileName(new File(path).toPath().getFileName().toString());
+            htmlPart.setFileName(fileName);
+            htmlPart.setHeader("Content-ID", "<" + fileName + ">");
+            htmlPart.setDisposition(MimeBodyPart.INLINE);
+            htmlPart.attachFile(path);
             multipart.addBodyPart(htmlPart);
-        } catch (MessagingException e) {
+        } catch (MessagingException | IOException e) {
             log.warn("Failed to attach file: " + path, e);
         }
     }
