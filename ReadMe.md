@@ -65,8 +65,8 @@ Create a JBoss module:
 /subsystem=keycloak-server/:write-attribute(name=providers,value=["classpath:${jboss.home.dir}/providers/*","module:com.lyra.idm.keycloak.email:0.0.1"])
 /subsystem=keycloak-server/spi=emailSender/:add
 /subsystem=keycloak-server/spi=emailSender/:write-attribute(name=default-provider,value=emailwithattachment)
-/subsystem=keycloak-server/spi=eventsListener/provider=emailwithattachment/:add(enabled=true)
-/subsystem=keycloak-server/spi=eventsListener/provider=emailwithattachment/:write-attribute(name=properties,value={"include" => "img/logo.png","parent" => "true"})
+/subsystem=keycloak-server/spi=emailSender/provider=emailwithattachment/:add(enabled=true)
+/subsystem=keycloak-server/spi=emailSender/provider=emailwithattachment/:write-attribute(name=properties,value={"include" => "img/logo.png","parent" => "true"})
 ```
 
 ## License
