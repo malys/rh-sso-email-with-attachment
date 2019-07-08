@@ -69,10 +69,6 @@ Create a JBoss module:
 /subsystem=keycloak-server/spi=emailSender/provider=emailwithattachment/:write-attribute(name=properties,value={"include" => "img/logo.png","parent" => "true"})
 ```
 
-## License
-
-* [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
 ## Release Notes
 
 ### 0.0.1
